@@ -1,0 +1,48 @@
+﻿<Window x:Class="Mogera.Controls.CultureSelectorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="300" Width="300"
+        xmlns:model="clr-namespace:Mogera.Controls.Model"
+        xmlns:extend="clr-namespace:Mogera.Controls.Extend"
+        xmlns:properties="clr-namespace:Mogera.Controls.Properties"
+        Title="{x:Static properties:Resources.CultureSelectDialogTitle_Text}"
+        WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MogeraCommonResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="CultureItemTemplate" DataType="{x:Type model:CultureSelectorItemViewModel}">
+                <CheckBox Padding="5"
+                          VerticalContentAlignment="Center"
+                          Content="{Binding CultureName}"
+                          IsChecked="{Binding IsChecked}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Style="{StaticResource ControlRegionStyle}">
+            <TextBox x:Name="_searchWordTextBox" 
+                     Style="{StaticResource InputtableStyle}" 
+                     HorizontalAlignment="Stretch" 
+                     extend:FocusAdvancement.AdvancesByEnterKey="True" 
+                     Text="{Binding SearchWord, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource WaterMarkTextBlock}" Text="{x:Static properties:Resources.Search_Text}"/>
+        </Grid>
+        
+        <DockPanel Grid.Row="1" Style="{StaticResource ControlRegionStyle}">
+            <ListBox ItemTemplate="{StaticResource CultureItemTemplate}" ItemsSource="{Binding CultureItems}"></ListBox>
+        </DockPanel>
+        
+        <StackPanel Grid.Row="2" Style="{StaticResource ControlRegionStyle}" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnOKClick" Content="OK" Style="{StaticResource FontControllerStyle}"  Click="btnOK_Click"  MinWidth="100"/>
+            <Button Content="Cancel" IsCancel="True" Padding="0,5" Style="{StaticResource FontControllerStyle}"  MinWidth="100"/>
+        </StackPanel>
+    </Grid>
+</Window>

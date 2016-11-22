@@ -1,0 +1,41 @@
+﻿<Window x:Class="Mogera.Controls.MogeraControlDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:properties="clr-namespace:Mogera.Controls.Properties"
+        Title="{x:Static properties:Resources.FontSelectDialogTitle_Text}"
+        Height="500" Width="600"
+        xmlns:Controls="clr-namespace:Mogera.Controls" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MogeraCommonResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Controls:MogeraControl x:Name="_mogeraControl" Grid.Row="0" HorizontalContentAlignment="Stretch"/>
+        
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal" 
+                    Style="{StaticResource ControlRegionStyle}" 
+                    DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+            <Button Name="_okButton" 
+                    Content="OK" 
+                    Style="{StaticResource FontControllerStyle}" 
+                    MinWidth="100" 
+                    Click="_okButton_Click"/>
+            <Button Content="Cancel" 
+                    Style="{StaticResource FontControllerStyle}" 
+                    Padding="0,5" 
+                    MinWidth="100" 
+                    IsCancel="True"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
