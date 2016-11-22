@@ -1,6 +1,9 @@
 # Mogera
 Font select controller for WPF.
 
+##Screenshots
+![control sample](https://github.com/kienaiProject/Mogera/blob/images/control_image.png)
+
 ##Contents
  * Font Control Library
  * Sample Project
@@ -16,6 +19,9 @@ Font select controller for WPF.
 
 #Mogera
 WPF用のフォントセレクターです。
+
+##スクリーンショット
+![control sample](https://github.com/kienaiProject/Mogera/blob/images/control_image.png)
 
 ##コンテンツ
  * フォントコントロールライブラリ
